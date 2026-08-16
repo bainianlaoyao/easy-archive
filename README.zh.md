@@ -48,6 +48,13 @@ dsh plugin --profile web add github:bainianlaoyao/easy-archive
 
 点击按钮不会冒泡到条目的「打开会话」事件。
 
+## 开发
+
+```
+node scripts/smoke.mjs   # 校验浏览器 bundle 结构
+node scripts/check.mjs  # (别名) 语法 + smoke
+```
+
 ## 说明
 
 - 空白「新会话」行与搜索结果行不会出现归档按钮。

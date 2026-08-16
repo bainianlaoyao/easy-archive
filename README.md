@@ -63,6 +63,13 @@ row:
 
 Clicking the button never bubbles to the row's "open session" handler.
 
+## Development
+
+```
+node scripts/smoke.mjs   # validate the browser bundle shape
+node scripts/check.mjs  # (alias) syntax + smoke
+```
+
 ## Notes
 
 - Blank "New Session" rows and search-result rows never get the button.
