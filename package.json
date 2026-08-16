@@ -36,5 +36,9 @@
     "sidebar",
     "workspace"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "smoke": "node scripts/smoke.mjs",
+    "check": "node scripts/smoke.mjs && node --check lib/index.js && node --check lib/client.js"
+  }
 }
