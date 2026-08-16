@@ -1,0 +1,12 @@
+# easy-archive bundle patch
+#
+# `dsh.bundle.patch` layer: when the plugin is installed into a profile (added
+# to `dsh.profile.bundles` in the profile's package.json, or via
+# `dsh plugin --profile web add github:bainianlaoyao/easy-archive`), profile
+# boot merges this patch — a single `insert` of the plugin row. The row's
+# `name` resolves the installed package, so the plugin's client half (declared
+# via `dsh.client` in package.json) is picked up by client-modules and served
+# to the browser as part of the `window.__DSH_BOOT__` graph.
+- insert:
+    - id: easy-archive
+      name: 'easy-archive'

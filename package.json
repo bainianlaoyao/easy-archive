@@ -1,0 +1,40 @@
+{
+  "name": "easy-archive",
+  "version": "0.1.0",
+  "description": "DSH web plugin: two-step inline archive on workspace sidebar rows — one click arms a red confirm, the second archives; archive is no longer buried in the ⋮ menu. · 工作区侧边栏行内两击归档：点一次变红确认，再点即归档，归档不再藏在 ⋮ 菜单里。",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime"
+      ]
+    }
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek",
+    "harness",
+    "archive",
+    "sidebar",
+    "workspace"
+  ],
+  "license": "MIT"
+}
