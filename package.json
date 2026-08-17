@@ -1,6 +1,6 @@
 {
   "name": "easy-archive",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "DSH web plugin: two-step inline archive on workspace sidebar rows — one click arms a red confirm, the second archives; archive is no longer buried in the ⋮ menu. · 工作区侧边栏行内两击归档：点一次变红确认，再点即归档，归档不再藏在 ⋮ 菜单里。",
   "type": "module",
   "main": "lib/index.js",
