@@ -4,7 +4,7 @@ A DSH (DeepSeek Harness) web plugin that moves session archiving out of the
 kebab (⋮) menu and onto the workspace sidebar row itself, as a two-step
 inline button:
 
-1. **Every session row carries an archive icon**, always visible right before the ⋮ button.
+1. **Hover a session row** — an archive icon appears right before the ⋮ button.
 2. **Click once** — the button switches to a red **「确认归档 / Confirm archive」** pill.
 3. **Click again** — the session is archived.
 
@@ -13,7 +13,7 @@ row, never buried in a submenu.
 
 ## Features
 
-- Always-visible inline archive button on every session row (no hover needed);
+- Hover-revealed inline archive button on every session row (next to the ⋮ menu);
   one click arms the red confirm, the second commits.
 - Archive entry automatically hidden from the ⋮ menu whenever it opens
   (rename / fork stay where they are).
