@@ -14,11 +14,11 @@ import { fileURLToPath } from 'node:url'
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)))
 const client = fs.readFileSync(path.join(root, 'lib/client.js'), 'utf8')
+const manifest = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'))
 
 const problems = []
 const mustInclude = [
   ['module loader wrapper', 'window.__ModuleLoader__.load({'],
-  ['plugin id', 'id: "easy-archive"'],
   ['apply export', 'exports.apply = apply;'],
   ['inject export', 'exports.inject = inject;'],
   ['style tag guard', 'data-plugin-css='],
@@ -29,6 +29,21 @@ for (const [label, needle] of mustInclude) {
 }
 for (const needle of ['dshArDebug', 'dryRun', 'syncNow']) {
   if (client.includes(needle)) problems.push(`leftover diagnostics: ${needle}`)
+}
+
+// client-modules keys its graph rows by PACKAGE NAME and rejects a bundle that
+// registers anything else ("loaded without registering \"<pkg>\""), so the id
+// handed to __ModuleLoader__.load must equal package.json's name — never the
+// host plugin row id. Compared against the manifest rather than a literal, so
+// the next package rename cannot leave the two out of sync again.
+const registered = /__ModuleLoader__\.load\(\{\s*id:\s*"([^"]+)"/.exec(client)
+if (registered === null) {
+  problems.push('cannot read the module-loader registration id')
+}
+else if (registered[1] !== manifest.name) {
+  problems.push(
+    `module-loader id ${JSON.stringify(registered[1])} must equal the package name ${JSON.stringify(manifest.name)}`,
+  )
 }
 
 if (problems.length > 0) {
